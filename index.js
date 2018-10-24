@@ -66,6 +66,12 @@ var yargs = require('yargs')
       demand: false,
       describe: 'request limit'
     })
+    .option('n', {
+      alias: 'secure',
+      default: process.env.SECURE_CONNECTION || "true",
+      demand: false,
+      describe: 'require secure connection (certificate must match the name)'
+    })
     .help()
     .version()
     .strict();
@@ -101,6 +107,7 @@ var BIND_ADDRESS = argv.b;
 var PORT = argv.p;
 var REQ_LIMIT = argv.l;
 
+var SECURE = (argv.n == 'true');
 var credentials;
 
 var PROFILE = process.env.AWS_PROFILE;
@@ -126,7 +133,7 @@ function getCredentials(req, res, next) {
 var options = {
     target: TARGET,
     changeOrigin: true,
-    secure: true
+    secure: SECURE
 };
 
 var proxy = httpProxy.createProxyServer(options);
