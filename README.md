@@ -47,7 +47,7 @@ You can pull the official container for use
 
 Run the container (do not forget to pass the required environment variables)
 
-	docker run -e AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY -p 127.0.0.1:9200:9200 aws-es-kibana -b 0.0.0.0 <cluster-endpoint>
+	docker run -e AWS_ACCESS_KEY_ID=XXXXXXXXXXX -e AWS_SECRET_ACCESS_KEY=XXXXXXXXXXX -p 127.0.0.1:9200:9200 aws-es-kibana -b 0.0.0.0 <cluster-endpoint>
 
 
 ## Credits
